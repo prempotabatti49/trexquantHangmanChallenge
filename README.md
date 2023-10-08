@@ -11,7 +11,7 @@ values: the probability of vowels given the length of words
 ## Data Encoding
 ### Input Data
 Permutation:
-From ~220k words dictionary, we have created around 10 million words by masking different letters in the word, i.e., by replacing letters with "_".
+From ~220k words dictionary, we have created around 10 million words by masking different letters in the word, i.e., by replacing letters with "__".
 
 The maximum length of a word in the given dictionary is 29. Testing will happen on mutually exclusive datasets. Thus max word length is assumed at 35.
 Each input word is encoded to a 35-dimensional vector, such that alphabets {a-z} will be replaced by numbers {1-26} and "_" will be replaced by 27. The vector will be pre-padded.
