@@ -79,6 +79,8 @@ def create_dataloader(input_tensor, target_tensor):
     all_features_dataloader = DataLoader(all_features_data, batch_size=128, shuffle=True)
     return all_features_dataloader
 
+def save_model(model):
+    torch.save(model.state_dict(), "bi-lstm-embedding-model-state.pt")    
 
 def train_model(input_tensor, target_tensor):
     all_features_dataloader = create_dataloader(input_tensor, target_tensor)
@@ -88,10 +90,10 @@ def train_model(input_tensor, target_tensor):
     loss_estimate = []
     batch_no = []
     epoch_no = []
-
     epochs = 8
     for t in range(epochs):
         print(f"Epoch {t+1}\n-------------------------------")
         train_loop(all_features_dataloader, model, loss_fn, optimizer, loss_estimate, batch_no, t, epoch_no)
         test_loop(all_features_dataloader, model, loss_fn)
     print("Done!")
+    save_model(model)
